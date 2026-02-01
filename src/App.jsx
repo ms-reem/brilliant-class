@@ -219,7 +219,7 @@ function useAnimatedTitle({ onColorChange, initialColor = 'cyan' }) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
             >
-                Reem's{' '}
+                Ali's{' '}
                 <span
                     className="home-adjective"
                     style={{ color: colorValues[currentColor] }}
@@ -241,7 +241,7 @@ function useAnimatedTitle({ onColorChange, initialColor = 'cyan' }) {
 const infoSections = [
     {
         titles: ['Who Made This?', 'The Creator', 'About Me', 'Meet the Teacher', 'Hello!', 'My Story', 'The Maker', 'Who Am I?', 'Greetings!', 'Hi There!'],
-        content: "My name is Reem Ali Alghamdi. I am an English teacher. I love helping kids learn English in fun ways. I made this app for my students to practice and have fun!"
+        content: "My name is Ali Alghamdi. I am an English teacher. I love helping kids learn English in fun ways. I made this app for my students to practice and have fun!"
     },
     {
         titles: ['Why This App?', 'The Reason', 'My Goal', 'The Purpose', 'Why I Made This', 'The Idea', 'My Dream', 'What I Want', 'The Plan', 'My Hope'],
