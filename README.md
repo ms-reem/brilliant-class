@@ -11,7 +11,7 @@
 ## 🚀 Live Demo
 
 **Check out the live application here:**  
-### [👉 Launch Brilliant Class](https://ms-reem.github.io/brilliant-class/)
+### [👉 Launch Brilliant Class](https://ali-nasser-08.github.io/brilliance-class/)
 
 *(Automated deployment via GitHub Actions)*
 
@@ -46,7 +46,7 @@ Want to run this locally? Follow these simple steps:
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/ms-reem/brilliant-class.git
+    git clone https://github.com/ali-nasser-08/brilliance-class.git
     ```
 
 2.  **Install dependencies**
