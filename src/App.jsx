@@ -157,63 +157,20 @@ function BackArrow({ onClick, color }) {
 // ============================================================
 
 function useAnimatedTitle({ onColorChange, initialColor = 'cyan' }) {
-    const [shuffledAdjectives, setShuffledAdjectives] = useState([])
-    const [adjIndex, setAdjIndex] = useState(0)
-    const [displayedWord, setDisplayedWord] = useState('')
-    const [isDeleting, setIsDeleting] = useState(false)
     const [currentColor, setCurrentColor] = useState(initialColor)
 
-    // Shuffle adjectives on mount
-    useEffect(() => {
-        setShuffledAdjectives(shuffle(adjectivesData))
-    }, [])
-
-    const currentAdjective = shuffledAdjectives[adjIndex] || 'amazing'
-
-    // Typewriter effect + notify parent of color changes
-    useEffect(() => {
-        if (shuffledAdjectives.length === 0) return
-
-        let timeout
-
-        if (!isDeleting) {
-            if (displayedWord.length < currentAdjective.length) {
-                timeout = setTimeout(() => {
-                    setDisplayedWord(currentAdjective.slice(0, displayedWord.length + 1))
-                }, 80 + Math.random() * 40)
-            } else {
-                timeout = setTimeout(() => {
-                    setIsDeleting(true)
-                }, 2500)
-            }
-        } else {
-            if (displayedWord.length > 0) {
-                timeout = setTimeout(() => {
-                    setDisplayedWord(displayedWord.slice(0, -1))
-                }, 40)
-            } else {
-                setIsDeleting(false)
-                // Get a different color - never the same as current
-                const newColor = getRandomAccentExcluding(currentColor)
-                setCurrentColor(newColor)
-                onColorChange?.(newColor)
-
-                if (adjIndex >= shuffledAdjectives.length - 1) {
-                    setShuffledAdjectives(shuffle(adjectivesData))
-                    setAdjIndex(0)
-                } else {
-                    setAdjIndex(prev => prev + 1)
-                }
-            }
-        }
-
-        return () => clearTimeout(timeout)
-    }, [displayedWord, isDeleting, currentAdjective, shuffledAdjectives, adjIndex, onColorChange, currentColor])
-
-    // Also notify on initial color
+    // Notify parent of color changes
     useEffect(() => {
         onColorChange?.(currentColor)
     }, [currentColor, onColorChange])
+
+    // Cycle colors every 3 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentColor(prev => getRandomAccentExcluding(prev))
+        }, 3000)
+        return () => clearInterval(interval)
+    }, [])
 
     return {
         title: (
@@ -224,16 +181,13 @@ function useAnimatedTitle({ onColorChange, initialColor = 'cyan' }) {
                 transition={{ delay: 0.2 }}
             >
                 Reem's{' '}
-                <span
+                <motion.span
                     className="home-adjective"
-                    style={{ color: colorValues[currentColor] }}
+                    animate={{ color: colorValues[currentColor] }}
+                    transition={{ duration: 0.8 }}
                 >
-                    {displayedWord}
-                </span>
-                <span
-                    className="home-cursor"
-                    style={{ backgroundColor: colorValues[currentColor] }}
-                />
+                    Amazing
+                </motion.span>
                 {' '}Class
             </motion.div>
         ),
