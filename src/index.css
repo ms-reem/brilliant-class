@@ -9,14 +9,16 @@
     --pink: #FF006E;
     --lime: #7CB518;
     --purple: #A855F7;
-    --red: #D62828;
+    --red: #FF0000;
+    --yellow: #FFBF00;
 
     /* Light Tints */
     --cyan-light: rgba(0, 217, 255, 0.15);
     --pink-light: rgba(255, 0, 110, 0.15);
     --lime-light: rgba(124, 181, 24, 0.15);
     --purple-light: rgba(168, 85, 247, 0.15);
-    --red-light: rgba(214, 40, 40, 0.15);
+    --red-light: rgba(255, 0, 0, 0.15);
+    --yellow-light: rgba(255, 191, 0, 0.15);
 
     /* Neutral Colors */
     --bg: #F8F9FA;
@@ -224,7 +226,13 @@ body {
 .btn-red {
     background: var(--red-light);
     border-color: var(--red);
-    color: #A31F1F;
+    color: #DD0000;
+}
+
+.btn-yellow {
+    background: var(--yellow-light);
+    border-color: var(--yellow);
+    color: #E68A00;
 }
 
 /* Solid Buttons */
@@ -973,6 +981,19 @@ body {
 
 .gap-lg {
     gap: var(--space-lg);
+}
+
+.gap-xl {
+    gap: var(--space-xl);
+}
+
+.h-full {
+    height: 100%;
+}
+
+.font-arabic {
+    font-family: var(--font-arabic);
+    direction: rtl;
 }
 
 /* ================================================
